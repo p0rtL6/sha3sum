@@ -1,0 +1,17 @@
+[package]
+name = "sha3sum"
+version = "0.1.0"
+edition = "2024"
+
+[dev-dependencies]
+criterion = { version = "0.7", features = ["html_reports"] }
+
+[[bench]]
+name = "main_benchmark"
+harness = false
+
+[profile.release]
+debug = "line-tables-only"
+
+[build]
+rustflags = ["-C", "force-frame-pointers=yes", "-C", "symbol-mangling-version=v0"]
